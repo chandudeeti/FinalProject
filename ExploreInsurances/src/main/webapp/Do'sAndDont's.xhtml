@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+<ui:include src="ExploreDummy.xhtml"></ui:include>
+	<title>Infinite Health Insurance</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Add Bootstrap CSS -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+		crossorigin="anonymous" />
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+	<!-- Add custom CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style>
+body {
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	margin-top: 50px;
+}
+
+.title {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.sub-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.do-list, .dont-list {
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.list-header {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+</style>
+</h:head>
+
+<h:body>
+<h:form>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 class="title">Welcome to Infinite Health Insurance!</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="sub-title">
+            Our customer service parameters may be seen at our website:
+            <a href="https://www.infinite.com/" target="_blank"
+              >www.infiniteHealth.co.in</a
+            >
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2 class="sub-title">Important Guiding Points:</h2>
+          <div class="do-list">
+            <h3 class="list-header">Do's</h3>
+            <ul>
+              <li>
+                Choose a health insurance plan that suits your needs and budget.
+              </li>
+              <li>
+                Read the policy documents carefully before signing up and ask for
+                clarification if you have any doubts.
+              </li>
+              <li>
+                Renew your policy on time to avoid any policy lapses.
+              </li>
+              <li>
+                Keep your insurer updated about any changes in your personal or
+                medical information.
+              </li>
+              <li>
+                Keep a copy of your health insurance policy and other relevant
+                documents in a safe place.
+              </li>
+            </ul>
+          </div>
+          <div class="dont-list">
+            <h3 class="list-header">Dont's</h3>
+            <ul>
+              <li>
+                Don't hide any pre-existing medical conditions from your insurer as
+                it may lead to claim rejection.
+              </li>
+              <li>
+                Don't delay seeking medical attention as it may impact the coverage
+                of your insurance policy.
+              </li>
+              <li>
+                Don't make fraudulent claims or provide false information to your
+                insurer.
+              </li>
+              <li>
+                Don't assume that all medical treatments are covered under your
+                policy. Check the terms and conditions carefully.
+              </li>
+              <li>
+                Don't ignore the exclusions and limitations of your policy as they
+                may impact your coverage.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+	</h:form>
+
+</h:body>
+</html>

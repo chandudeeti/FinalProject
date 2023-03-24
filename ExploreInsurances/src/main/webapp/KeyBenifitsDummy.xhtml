@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Key Benifits</title>
+</h:head>
+<ui:include src="/ExploreDummy.xhtml" />
+<body>
+	<center>
+		<label style="font-weight: bold; font-size: 35px;">Details Of
+			&nbsp; "<h:outputText value="#{Dao.policyName}" /> - <h:outputText
+				value="#{Dao.policyType}" />"
+		</label>
+	</center>
+	<div class="container mt-3">
+		<h:form id="form">
+
+			
+			<p:accordionPanel>
+				<p:tab title="Key Benifits">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="#{Dao.getPolicyDetails(Dao.policyId)}" />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Basic Premium">
+					<h:panelGrid columns="2" cellpadding="10">
+					The Basic premium of this policy is : #{Dao.getPremium(Dao.policyId)}
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="About">
+					<table class="table">
+						<tr class="table-primary">
+							<th>Launch Date</th>
+							<th>End Date</th>
+							<th>Company Id</th>
+							<th>WebSite</th>
+							
+
+						</tr>
+						<tr class="table-success">
+							<td>#{Dao.launchDate(Dao.policyId)}</td>
+							<td>#{Dao.getExpiryDate(Dao.policyId)}</td>
+							<td>#{cDao.getMail(cDao.companyId)}</td>
+							<td>#{cDao.getWebSite(cDao.companyId)}</td>
+							
+						</tr>
+					</table>
+				</p:tab>
+				<p:tab title="Age Wise Premimus, Dicounts and Coverage">
+					<table class="table">
+						<tr class="table-dark">
+							<th><h:outputText value="Age Group" /></th>
+							<th><h:outputText value="Premium" /></th>
+							<th><h:outputText value="Discount" /></th>
+							<th><h:outputText value="Coverage" /></th>
+							
+						</tr>
+						<tr class="table-light">
+							<th>Above 60</th>
+							<td>#{Dao.getPremiumAbove60(Dao.policyId)}</td>
+							<td>#{Dao.getDiscountAbove60(Dao.policyId)} %</td>
+							<td>#{Dao.getCoverageAbove60(Dao.policyId)}</td>
+							
+						</tr>
+						<tr>
+							<th>In between 18 to 60</th>
+							<td>#{Dao.getPremium18To60(Dao.policyId)}</td>
+							<td>#{Dao.getDiscount18To60(Dao.policyId)} %</td>
+							<td>#{Dao.getCoverageBtw18And60(Dao.policyId)}</td>
+							
+						</tr>
+						<tr>
+							<th>Below 18</th>
+							<td>#{Dao.getPremiumBelow18(Dao.policyId)}</td>
+							<td>#{Dao.getDiscountBelow18(Dao.policyId)} %</td>
+							<td>#{Dao.getCoverageBelow18(Dao.policyId)}</td>
+							
+						</tr>
+						
+					</table>
+				</p:tab>
+
+			</p:accordionPanel>
+		</h:form>
+	</div>
+</body>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<ui:include src="Footer.xhtml"></ui:include>
+
+</html>

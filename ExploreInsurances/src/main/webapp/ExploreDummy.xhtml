@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Insurances</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>My Form</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+		crossorigin="anonymous" />
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+	<style>
+/* Global styles */
+body {
+	background-color: #f9f9f9;
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+.form-group label {
+	font-weight: 600;
+}
+
+.form-control {
+	border-radius: 4px;
+}
+
+form {
+	border-radius: 10px;
+}
+
+.form-check {
+	margin: 10px 0;
+}
+
+.form-check label {
+	margin-right: 20px;
+}
+
+.btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+	font-weight: 600;
+	transition: all 0.3s;
+}
+
+.btn-primary:hover {
+	background-color: #0069d9;
+	border-color: #0062cc;
+}
+
+/* Select component styles */
+.dropdown-menu {
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.ui-selectonemenu {
+	width: 100%;
+}
+
+.ui-selectonemenu-label {
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	transition: all 0.3s;
+}
+
+.ui-selectonemenu-trigger {
+	border: none;
+	background-color: transparent;
+	color: #007bff;
+	transition: all 0.3s;
+}
+
+.ui-selectonemenu-trigger:hover {
+	color: #0069d9;
+}
+
+.ui-state-active {
+	background-color: #007bff !important;
+	color: #fff !important;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+	.form-check label {
+		display: block;
+		margin: 10px 0;
+	}
+}
+</style>
+</h:head>
+<h:body>
+	<marquee style="background-color: rgb(185, 182, 182); height: 10%;">Infinite
+		insurance contact-+91-9784387973</marquee>    
+		<nav class="navbar navbar-expand-lg navbar-light "
+		style="height: 60px; background-color: rgb(226, 226, 18);">
+		<div class="container-fluid">
+			<h4
+				style="color: rgb(15, 15, 122); font-family: Arial, Helvetica, sans-serif;">Infinite
+				Insurance company Ltd.</h4>
+		</div>
+	</nav>   
+	 <div>
+		        <img src="https://i.ibb.co/DQQqNTP/insurence.png" alt=""
+			style="width: 100%; margin-top: -50px;" />
+	</div>  
+	
+	<div class="container mt-3">
+		<h:form id="myForm" resetValues="true">
+			<div class="form-group">
+				<label for="companyNames">Company Names:</label>
+				<p:selectOneMenu id="companyName" value="#{cDao.companyName}"
+					onchange="submit()" required="true"
+					requiredMessage="Please Select the company"
+					valueChangeListener="#{cDao.companyLocalCodeChange}"
+					class="form-control">
+					<f:selectItem itemLabel="---Select Company---" itemValue="" />
+					<f:selectItems class="dropdown-item"
+						value="#{cDao.showCompanyNames()}" />
+					
+				</p:selectOneMenu>
+				<p:watermark for="companyName"></p:watermark>
+				<p:message for="companyName" id="companyNameMessage"
+					 showDetail="false" showSummary="true" />
+				
+				<br></br> <br></br> <label for="PolicyNames">Policy Names:</label>
+				<p:selectOneMenu id="PolicyNames" value="#{Dao.policyName}"
+					required="true" requiredMessage="Please Select Policy"
+					onchange="submit()" valueChangeListener="#{Dao.policyChangeEvent}"
+					class="form-control">
+					<f:selectItem itemLabel="---Select Policy---" itemValue="" />
+					<f:selectItems class="dropdown-item"
+						value="#{Dao.showPolicyNamesByCompId()}" />
+				</p:selectOneMenu>
+				<p:watermark for="PolicyNames"></p:watermark>
+				<p:message for="PolicyNames" showDetail="false" showSummary="true"></p:message>
+			</div>
+			<div class="form-group mt-3">
+				<label>Policy Types:</label>
+				<div class="form-check">
+					<p:selectOneRadio id="PolicyType" value="#{Dao.policyType}"
+						layout="pageDirection" required="true"
+						requiredMessage="Please Selcet Policy Type">
+						<f:selectItems value="#{Dao.showPolicyTypesByPolicyName()}" />
+					</p:selectOneRadio>
+					<p:message for="PolicyType" showDetail="false" showSummary="true"></p:message>
+				</div>
+				<br></br> <br></br>
+				<h:commandButton action="#{Dao.submitPolicy()}" value="Submit"
+					class="btn btn-primary">
+				</h:commandButton>
+
+				<h:commandButton action="#{Dao.dosAndDonts()}"
+					value="Do's and Dont's" class="btn btn-primary"
+					style="margin-left: 800px;">
+				</h:commandButton>
+			</div>
+			<div class="mt-3"></div>
+			<br></br>
+
+		</h:form>
+
+	</div>
+
+	<br></br>
+
+</h:body>
+
+</html>
